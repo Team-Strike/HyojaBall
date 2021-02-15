@@ -21,14 +21,14 @@ services:
     depends_on:
       - mysql_db
 
-  #web:
-  client:
-    context: ./client
-  command: ["npm","start"]
-  ports:
-    - 3000:3000
-  volumes:
-  tty: true
+  # client:
+  #   build:
+  #     context: ./client
+  #   command: ["npm", "start"]
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #   tty: true
 
 
 volumes:

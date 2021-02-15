@@ -23,13 +23,18 @@ services:
 
   #web:
   client:
-    context: ./client
-  command: ["npm","start"]
-  ports:
+    build:
+      context: ./client
+    command: ["npm","start"]
+    ports:
     - 3000:3000
-  volumes:
-    - 
-  tty: true
+    volumes:
+      - ./client/:/frontend
+      - ./client/node_modules/:/frontend/node_modules
+    environment:
+      - CI=true
+      - CHOKIDAR_USEPOLLING=true
+    tty: true
 
 
 volumes:
