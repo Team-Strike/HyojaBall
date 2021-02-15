@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  mysql_db:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 8989:3306
+    env_file:
+      - ./settings/dev/.env
+
+  myadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    env_file: 
+      - ./settings/dev/.env.pma
+    depends_on:
+      - mysql_db
+
+  #web:
+  #client:
+
+volumes:
+  mysql_data:
+  
