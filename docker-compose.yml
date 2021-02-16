@@ -46,6 +46,7 @@ services:
       - mysql_db
     volumes:
       - springdata:/usr/src/mymaven:rw
+      - ./server/:/server/
 
 volumes:
   mysql_data:
