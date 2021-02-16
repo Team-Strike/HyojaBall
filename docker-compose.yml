@@ -21,7 +21,6 @@ services:
     depends_on:
       - mysql_db
 
-  #web:
   client:
     build:
       context: ./client
@@ -35,6 +34,13 @@ services:
       - CI=true
       - CHOKIDAR_USEPOLLING=true
     tty: true
+
+  spring-boot:
+    build:
+      context: ./server
+    ports:
+      - 8080:8080
+    # volumes:
 
 
 volumes:
