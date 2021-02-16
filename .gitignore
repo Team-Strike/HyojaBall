@@ -28,5 +28,5 @@
 hs_err_pid*
 
 # environment
-.env
-.env.pma
+./settings/dev/.env
+./settings/dev/.env.pma
