@@ -15,7 +15,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8080:80
+      - 8081:80
     env_file: 
       - ./settings/dev/.env.pma
     depends_on:
@@ -36,12 +36,15 @@ services:
     tty: true
 
   spring-boot:
+    restart: always
+    image: spring-boot
     build:
       context: ./server
     ports:
       - 8080:8080
+    depends_on:
+      - mysql_db
     # volumes:
-
 
 volumes:
   mysql_data:
