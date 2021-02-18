@@ -97,13 +97,7 @@
             <artifactId>mybatis</artifactId>
             <version>3.4.2</version>
         </dependency>
-		
-		<!-- Flyway -->
-		<dependency>  
-    		<groupId>org.flywaydb</groupId>  
-    		<artifactId>flyway-maven-plugin</artifactId>  
-    		<version>7.5.2</version>  
-		</dependency>
+	
 	</dependencies>
 
 	<build>
@@ -138,16 +132,28 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
-			<!-- Flyway Plugin-->
-			<plugin> 
-    			<groupId>org.flywaydb</groupId> 
-    			<artifactId>flyway-maven-plugin</artifactId> 
-    			<version>7.5.2</version> 
-    			<configuration> 
-        			
-    			</configuration>
-			</plugin>
 		</plugins>
+
+
+		<!-- Mapper.xml -->
+		<resources> 
+        <resource> 
+            <directory>src/main/java</directory> 
+            <includes> 
+                <include>**/*.xml</include> 
+            </includes> 
+        </resource> 
+        <resource> 
+            <directory>src/main/resources</directory> 
+            <includes> 
+                <include>**/*.xml</include> 
+                <include>**/*.properties</include> 
+                <include>**/*.setting</include> 
+            </includes> 
+        </resource> 
+    </resources>
+
+
 	</build>
 
 </project>
