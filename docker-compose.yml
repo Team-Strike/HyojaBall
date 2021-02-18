@@ -28,8 +28,8 @@ services:
     ports:
     - 3000:3000
     volumes:
-      - ./client/:/frontend
-      - ./client/node_modules/:/frontend/node_modules
+      - ./client/:/client
+      - ./client/node_modules/:/client/node_modules
     environment:
       - CI=true
       - CHOKIDAR_USEPOLLING=true
