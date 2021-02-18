@@ -17,5 +17,7 @@ This project is a website for visualizing and analyzing the data of KBO players.
   $ docker-compose down # 프로젝트 마친 후 실행
  ```
 
+## Migrations
+
 ## Dataset
 - http://www.kbreport.com/main
