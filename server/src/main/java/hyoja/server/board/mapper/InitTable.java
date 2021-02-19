@@ -11,5 +11,6 @@ public interface InitTable {
   public void playerTable() throws Exception;
   public void hitterBasicTable() throws Exception;
   public void pitcherBasicTable() throws Exception;
-
+  public void seasonTable() throws Exception;
+  public void imageTable() throws Exception;
 }

@@ -10,7 +10,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     (
       id INT NOT NULL,
       name VARCHAR(50) NOT NULL,
-      logo_image VARCHAR(100),
+      image_id INT NOT NULL,
+      PRIMARY KEY(id),
+      FOREIGN KEY(image_id) REFERENCES image(id)
+    )
+  </select>
+
+  <!-- image Table -->
+  <select id="imageTable">
+    CREATE TABLE IF NOT EXISTS image
+    (
+      id INT NOT NULL,
+      data BLOB NOT NULL,
       PRIMARY KEY(id)
     )
   </select>
@@ -22,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       id INT NOT NULL,
       hitter_basic_record_id INT NOT NULL,
       game INT NOT NULL,
-      타석 INT NOT NULL, <!-- 타석 -->
+      appearance INT NOT NULL, <!-- 타석 -->
       at_bat INT NOT NULL, <!-- 타수 -->
       hit INT NOT NULL, <!-- 안타 -->
       hr INT NOT NULL, <!-- 홈런 -->
@@ -30,10 +41,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       rbi INT NOT NULL, <!-- 타점 -->
       bb INT NOT NULL, <!-- 볼넷 -->
       strikesouts INT NOT NULL, <!-- 삼진 -->
+      stolen_base INT NOT NULL, <!-- 도루 -->
       batting_avg DOUBLE NOT NULL, <!-- 타율 -->
       obp DOUBLE NOT NULL, <!-- 출루율 -->
       slg DOUBLE NOT NULL, <!-- 장타율 -->
-      ops INT NOT NULL, <!-- 출루율과 장타율의 합 -->
+      ops DOUBLE NOT NULL, <!-- 출루율과 장타율의 합 -->
       war DOUBLE NOT NULL,
       PRIMARY KEY(id),
       FOREIGN KEY(hitter_basic_record_id) REFERENCES hitter_basic_record(id)
@@ -52,9 +64,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       hold INT NOT NULL,
       blown INT NOT NULL,
       game INT NOT NULL,
-      starting INT NOT NULL, <!-- 선발 -->
-      이닝 INT NOT NULL, <!-- 이닝 -->
-      strikesouts INT NOT NULL, <!-- 삼진 -->
+      starting_pit INT NOT NULL, <!-- 선발 -->
+      inning INT NOT NULL, <!-- 이닝 -->
+      strikesouts INT NOT NULL,  <!-- 삼진 -->
       bb INT NOT NULL, <!-- 볼넷 -->
       hr INT NOT NULL, <!-- 홈런 -->
       lob DOUBLE NOT NULL,
@@ -63,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       fip DOUBLE NOT NULL,
       kfip DOUBLE NOT NULL,
       war DOUBLE NOT NULL,
-      PRIMARY KEY(id)
+      PRIMARY KEY(id),
       FOREIGN KEY(pitcher_basic_record_id) REFERENCES pitcher_basic_record(id)
     )
   </select>
@@ -74,16 +86,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     (
       id INT NOT NULL,
       single INT NOT NULL,
-      double INT NOT NULL,
+      doubles INT NOT NULL,
       triple INT NOT NULL,
       bb INT NOT NULL, <!-- 볼넷 -->
       ibb INT NOT NULL, <!-- 고의4구 -->
       HBP INT NOT NULL, <!-- 데드볼 -->
       strikeouts INT NOT NULL, <!-- 삼진 -->
-      희플 INT NOT NULL,
-      희타 INT NOT NULL,
-      병살 INT NOT NULL,
-      도실 INT NOT NULL
+      sac_fly INT NOT NULL, <!-- 희생플라이 -->
+      sac_bunt INT NOT NULL,<!-- 희생 플라이 -->
+      gidp INT NOT NULL, <!-- 병살타 -->
+      caught_stealing INT NOT NULL, <!-- 도루 실패 -->
       PRIMARY KEY(id)
     )
   </select>
@@ -93,23 +105,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     CREATE TABLE IF NOT EXISTS pitcher_basic_record
     (
       id INT NOT NULL,
-      완투 INT NOT NULL, <!-- 완투 -->
-      완봉 INT NOT NULL, <!-- 완봉 -->
+      complete INT NOT NULL, <!-- 완투 -->
+      shutout INT NOT NULL, <!-- 완봉 -->
       QS INT NOT NULL,
-      타자 INT NOT NULL, <!-- 타자 -->
-      안타 INT NOT NULL, <!-- 안타-->
-      2루타 INT NOT NULL, <!-- 2루타 -->
-      3루타 INT NOT NULL, <!-- 3루타 -->
-      실점 INT NOT NULL, <!-- 실점 -->
-      자책 INT NOT NULL, <!-- 자책 -->
-      삼진 INT NOT NULL, <!-- 삼진 -->
-      고4 INT NOT NULL, <!-- 고의4구 -->
+      hitter INT NOT NULL, <!-- 타자 -->
+      hit INT NOT NULL, <!-- 안타-->
+      doubles INT NOT NULL, <!-- 2루타 -->
+      triple INT NOT NULL, <!-- 3루타 -->
+      runs INT NOT NULL, <!-- 실점 -->
+      eruns INT NOT NULL, <!-- 자책 -->
+      strikesouts INT NOT NULL, <!-- 삼진 -->
+      ibb INT NOT NULL, <!-- 고의4구 -->
       HBP INT NOT NULL,
-      폭투 INT NOT NULL, <!-- 폭투 -->
-      보크 INT NOT NULL, <!-- 보크 -->
+      wild_pitch INT NOT NULL, <!-- 폭투 -->
+      balk INT NOT NULL, <!-- 보크 -->
       PK INT NOT NULL,
-      도루 INT NOT NULL, <!-- 도루 -->
-      도실 INT NOT NULL, <!-- 도실 -->
+      stolen_base INT NOT NULL, <!-- 도루 -->
+      caught_stealing INT NOT NULL, <!-- 도실 -->
       PRIMARY KEY(id)
     )
   </select>
@@ -120,6 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     (
       id INT NOT NULL,
       team_id INT NOT NULL,
+      season_id INT NOT NULL,
       hitter_record_id INT,
       pitcher_record_id INT,
       name VARCHAR(50) NOT NULL,
@@ -127,8 +140,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       salary INT NOT NULL,
       PRIMARY KEY(id),
       FOREIGN KEY(team_id) REFERENCES team(id),
-      FOREIGN KEY(hitter_record_id) REFERENCES hitter_record(id),
-      FOREIGN KEY(pitcher_record_id) REFERENCES pitcher_record(id)
+      FOREIGN KEY(season_id) REFERENCES season(id),
+      FOREIGN KEY(hitter_record_id) REFERENCES hitter_main_record(id),
+      FOREIGN KEY(pitcher_record_id) REFERENCES pitcher_main_record(id)
     )
   </select>
 

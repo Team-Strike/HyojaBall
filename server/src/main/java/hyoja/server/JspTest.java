@@ -20,7 +20,9 @@ public class JspTest {
   @RequestMapping("/test")
   private String jspTest() throws Exception{
     // System.out.println(mHiterMapper.hiterCount()); //DB연동 테스트
+    mInitTable.imageTable();
     mInitTable.teamTable();
+    mInitTable.seasonTable();
     mInitTable.hitterBasicTable();
     mInitTable.pitcherBasicTable();
     mInitTable.hitterMainTable();
