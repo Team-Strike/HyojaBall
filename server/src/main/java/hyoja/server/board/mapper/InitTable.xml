@@ -37,8 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       birthday DATE NOT NULL,
       salary INT NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(team_id) REFERENCES team(id),
-      FOREIGN KEY(season_id) REFERENCES season(id)
+      FOREIGN KEY(team_id) REFERENCES team(id) ON DELETE CASCADE, 
+      FOREIGN KEY(season_id) REFERENCES season(id) ON DELETE CASCADE
     )
   </select>
 
@@ -53,8 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       birthday DATE NOT NULL,
       salary INT NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(team_id) REFERENCES team(id),
-      FOREIGN KEY(season_id) REFERENCES season(id)
+      FOREIGN KEY(team_id) REFERENCES team(id) ON DELETE CASCADE,
+      FOREIGN KEY(season_id) REFERENCES season(id) ON DELETE CASCADE
     )
   </select>
 
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       ops DOUBLE NOT NULL, <!-- 출루율과 장타율의 합 -->
       war DOUBLE NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(hitter_id) REFERENCES hitter(id)
+      FOREIGN KEY(hitter_id) REFERENCES hitter(id) ON DELETE CASCADE
     )
   </select>
 
@@ -108,7 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       kfip DOUBLE NOT NULL,
       war DOUBLE NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(pitcher_id) REFERENCES pitcher(id)
+      FOREIGN KEY(pitcher_id) REFERENCES pitcher(id) ON DELETE CASCADE
     )
   </select>
 
@@ -130,7 +130,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       gidp INT NOT NULL, <!-- 병살타 -->
       caught_stealing INT NOT NULL, <!-- 도루 실패 -->
       PRIMARY KEY(id),
-      FOREIGN KEY(hitter_main_record_id) REFERENCES hitter_main_record(id)
+      FOREIGN KEY(hitter_main_record_id) REFERENCES hitter_main_record(id) ON DELETE CASCADE
     )
   </select>
 
@@ -158,7 +158,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       stolen_base INT NOT NULL, <!-- 도루 -->
       caught_stealing INT NOT NULL, <!-- 도실 -->
       PRIMARY KEY(id),
-      FOREIGN KEY(pitcher_main_record_id) REFERENCES pitcher_main_record(id)
+      FOREIGN KEY(pitcher_main_record_id) REFERENCES pitcher_main_record(id) ON DELETE CASCADE
     )
   </select>
 
@@ -170,7 +170,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       team_id INT NOT NULL,
       name VARCHAR(30) NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(team_id) REFERENCES team(id)
+      FOREIGN KEY(team_id) REFERENCES team(id) ON DELETE CASCADE
     )
   </select>
 </mapper>
