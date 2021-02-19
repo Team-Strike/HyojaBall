@@ -20,7 +20,12 @@ public class JspTest {
   @RequestMapping("/test")
   private String jspTest() throws Exception{
     // System.out.println(mHiterMapper.hiterCount()); //DB연동 테스트
-    mInitTable.initTable();
+    mInitTable.teamTable();
+    mInitTable.hitterBasicTable();
+    mInitTable.pitcherBasicTable();
+    mInitTable.hitterMainTable();
+    mInitTable.pticherMainTable();
+    mInitTable.playerTable();
     return "test"; //생성한 jsp명(test.jsp)
   }
 }

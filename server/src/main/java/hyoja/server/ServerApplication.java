@@ -17,7 +17,6 @@ public class ServerApplication {
 		SpringApplication.run(ServerApplication.class, args);
 	}
 
-	    
   //SqlSessionFactory 설정 
   @Bean
   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception{        
