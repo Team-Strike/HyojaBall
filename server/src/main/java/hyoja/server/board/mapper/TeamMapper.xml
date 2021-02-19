@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.TeamMapper">
+ <select id="teamCount" resultType="int">
+    SELECT
+     COUNT(*)
+    FROM TEAM
+  </select>
+  
+  <select id="teamList" resultType="hyoja.server.board.domain.TeamVO">
+    SELECT
+        *
+    FROM TEAM
+  </select>
+    
+  <select id="teamDetail" parameterType="int" resultType="hyoja.server.board.domain.TeamVO">
+    SELECT
+        *
+    FROM TEAM
+    WHERE
+        TNO = #{tno}
+  </select>
+</mapper>
