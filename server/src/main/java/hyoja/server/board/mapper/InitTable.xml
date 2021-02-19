@@ -26,12 +26,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     )
   </select>
 
+  <!-- hitter talbe -->
+  <select id="hitterTable">
+    CREATE TABLE IF NOT EXISTS hitter
+    (
+      id INT NOT NULL,
+      team_id INT NOT NULL,
+      season_id INT NOT NULL,
+      name VARCHAR(50) NOT NULL,
+      birthday DATE NOT NULL,
+      salary INT NOT NULL,
+      PRIMARY KEY(id),
+      FOREIGN KEY(team_id) REFERENCES team(id),
+      FOREIGN KEY(season_id) REFERENCES season(id)
+    )
+  </select>
+
+  <!-- pitcher table -->
+  <select id="pitcherTable">
+    CREATE TABLE IF NOT EXISTS pitcher
+    (
+      id INT NOT NULL,
+      team_id INT NOT NULL,
+      season_id INT NOT NULL,
+      name VARCHAR(50) NOT NULL,
+      birthday DATE NOT NULL,
+      salary INT NOT NULL,
+      PRIMARY KEY(id),
+      FOREIGN KEY(team_id) REFERENCES team(id),
+      FOREIGN KEY(season_id) REFERENCES season(id)
+    )
+  </select>
+
   <!-- hitter main record table -->
   <select id="hitterMainTable">
     CREATE TABLE IF NOT EXISTS hitter_main_record
     (
       id INT NOT NULL,
-      hitter_basic_record_id INT NOT NULL,
+      hitter_id INT NOT NULL,
       game INT NOT NULL,
       appearance INT NOT NULL, <!-- 타석 -->
       at_bat INT NOT NULL, <!-- 타수 -->
@@ -48,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       ops DOUBLE NOT NULL, <!-- 출루율과 장타율의 합 -->
       war DOUBLE NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(hitter_basic_record_id) REFERENCES hitter_basic_record(id)
+      FOREIGN KEY(hitter_id) REFERENCES hitter(id)
     )
   </select>
 
@@ -57,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     CREATE TABLE IF NOT EXISTS pitcher_main_record
     (
       id INT NOT NULL,
-      pitcher_basic_record_id INT NOT NULL,
+      pitcher_id INT NOT NULL,
       win INT NOT NULL,
       lose INT NOT NULL,
       save INT NOT NULL,
@@ -76,7 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       kfip DOUBLE NOT NULL,
       war DOUBLE NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(pitcher_basic_record_id) REFERENCES pitcher_basic_record(id)
+      FOREIGN KEY(pitcher_id) REFERENCES pitcher(id)
     )
   </select>
 
@@ -85,6 +117,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     CREATE TABLE IF NOT EXISTS hitter_basic_record
     (
       id INT NOT NULL,
+      hitter_main_record_id INT NOT NULL,
       single INT NOT NULL,
       doubles INT NOT NULL,
       triple INT NOT NULL,
@@ -96,7 +129,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       sac_bunt INT NOT NULL,<!-- 희생 플라이 -->
       gidp INT NOT NULL, <!-- 병살타 -->
       caught_stealing INT NOT NULL, <!-- 도루 실패 -->
-      PRIMARY KEY(id)
+      PRIMARY KEY(id),
+      FOREIGN KEY(hitter_main_record_id) REFERENCES hitter_main_record(id)
     )
   </select>
 
@@ -105,9 +139,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     CREATE TABLE IF NOT EXISTS pitcher_basic_record
     (
       id INT NOT NULL,
+      pitcher_main_record_id INT NOT NULL,
       complete INT NOT NULL, <!-- 완투 -->
       shutout INT NOT NULL, <!-- 완봉 -->
-      QS INT NOT NULL,
+      qs INT NOT NULL,
       hitter INT NOT NULL, <!-- 타자 -->
       hit INT NOT NULL, <!-- 안타-->
       doubles INT NOT NULL, <!-- 2루타 -->
@@ -116,33 +151,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       eruns INT NOT NULL, <!-- 자책 -->
       strikesouts INT NOT NULL, <!-- 삼진 -->
       ibb INT NOT NULL, <!-- 고의4구 -->
-      HBP INT NOT NULL,
+      hbp INT NOT NULL,
       wild_pitch INT NOT NULL, <!-- 폭투 -->
       balk INT NOT NULL, <!-- 보크 -->
-      PK INT NOT NULL,
+      pk INT NOT NULL,
       stolen_base INT NOT NULL, <!-- 도루 -->
       caught_stealing INT NOT NULL, <!-- 도실 -->
-      PRIMARY KEY(id)
-    )
-  </select>
-
-  <!-- player talbe -->
-  <select id="playerTable">
-    CREATE TABLE IF NOT EXISTS player
-    (
-      id INT NOT NULL,
-      team_id INT NOT NULL,
-      season_id INT NOT NULL,
-      hitter_record_id INT,
-      pitcher_record_id INT,
-      name VARCHAR(50) NOT NULL,
-      birthday DATE NOT NULL,
-      salary INT NOT NULL,
       PRIMARY KEY(id),
-      FOREIGN KEY(team_id) REFERENCES team(id),
-      FOREIGN KEY(season_id) REFERENCES season(id),
-      FOREIGN KEY(hitter_record_id) REFERENCES hitter_main_record(id),
-      FOREIGN KEY(pitcher_record_id) REFERENCES pitcher_main_record(id)
+      FOREIGN KEY(pitcher_main_record_id) REFERENCES pitcher_main_record(id)
     )
   </select>
 

@@ -23,11 +23,13 @@ public class JspTest {
     mInitTable.imageTable();
     mInitTable.teamTable();
     mInitTable.seasonTable();
-    mInitTable.hitterBasicTable();
-    mInitTable.pitcherBasicTable();
+    mInitTable.hitterTable();
+    mInitTable.pitcherTable();
     mInitTable.hitterMainTable();
     mInitTable.pticherMainTable();
-    mInitTable.playerTable();
+    mInitTable.hitterBasicTable();
+    mInitTable.pitcherBasicTable();
+
     return "test"; //생성한 jsp명(test.jsp)
   }
 }

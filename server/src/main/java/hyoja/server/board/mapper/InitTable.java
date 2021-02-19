@@ -8,7 +8,8 @@ public interface InitTable {
   public void teamTable() throws Exception;
   public void hitterMainTable() throws Exception;
   public void pticherMainTable() throws Exception;
-  public void playerTable() throws Exception;
+  public void hitterTable() throws Exception;
+  public void pitcherTable() throws Exception;
   public void hitterBasicTable() throws Exception;
   public void pitcherBasicTable() throws Exception;
   public void seasonTable() throws Exception;
