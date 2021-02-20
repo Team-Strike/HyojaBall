@@ -21,6 +21,11 @@ services:
     depends_on:
       - mysql_db
 
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:8000
+    
   # client:
   #   build:
   #     context: ./client
@@ -30,7 +35,19 @@ services:
   #   volumes:
   #   tty: true
 
+  spring-boot:
+    restart: always
+    image: spring-boot
+    build:
+      context: ./server
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql_db
+    volumes:
+      - springdata:/usr/src/mymaven:rw
+      - ./server/:/server/
 
 volumes:
   mysql_data:
-  
+  springdata:
