@@ -7,19 +7,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  <select id="teamCount" resultType="int">
     SELECT
      COUNT(*)
-    FROM TEAM
+    FROM team
   </select>
   
   <select id="teamList" resultType="hyoja.server.board.domain.TeamVO">
     SELECT
         *
-    FROM TEAM
+    FROM team
   </select>
     
   <select id="teamDetail" parameterType="int" resultType="hyoja.server.board.domain.TeamVO">
     SELECT
         *
-    FROM TEAM
+    FROM team
     WHERE
         TNO = #{tno}
   </select>
