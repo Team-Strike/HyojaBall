@@ -25,15 +25,23 @@ services:
     build: ./nginx
     ports:
       - 80:8000
-    
-  # client:
-  #   build:
-  #     context: ./client
-  #   command: ["npm", "start"]
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #   tty: true
+    voluems:
+      - build_folder:/client/build
+
+  client:
+    build:
+      context: ./client
+      args:
+        API_URL: '*'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client/:/client
+      - build_folder:/client/build
+      - ./client/node_modules/:/client/node_modules
+    environment: 
+      - CI=true
+    tty: true
 
   spring-boot:
     restart: always
@@ -51,3 +59,4 @@ services:
 volumes:
   mysql_data:
   springdata:
+  build_folder:
