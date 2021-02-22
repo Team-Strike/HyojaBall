@@ -1,6 +1,6 @@
 package hyoja.server.board.domain;
 
-public class Pitchermain {
+public class PitchermainVO {
 
 	int id;
 	String name;
@@ -16,12 +16,12 @@ public class Pitchermain {
 	int strikesouts;
 	int bb;
 	int hr;
-	int lob;
-	int era;
-	int ra9_war;
-	int fip;
-	int kfip;
-	int war;
+	double lob;
+	double era;
+	double ra9_war;
+	double fip;
+	double kfip;
+	double war;
 	
 	public int getId() {
 		return id;

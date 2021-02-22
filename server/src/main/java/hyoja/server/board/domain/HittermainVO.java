@@ -15,11 +15,11 @@ public class HittermainVO {
 	int bb;
 	int strikesouts;
 	int stolen_base;
-	int batting_avg;
-	int obp;
-	int slg;
-	int ops;
-	int war;
+	double batting_avg;
+	double obp;
+	double slg;
+	double ops;
+	double war;
 	
 	public int getId() {
 		return id;
