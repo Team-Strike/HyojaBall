@@ -15,7 +15,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8080:80
+      - 8081:80
     env_file: 
       - ./settings/dev/.env.pma
     depends_on:
