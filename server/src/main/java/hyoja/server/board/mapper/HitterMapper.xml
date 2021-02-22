@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.TeamMapper">
+
+  <select id="hitterList" resultType="hyoja.server.board.domain.HitterVO">
+    SELECT
+        *
+    FROM hitter
+  </select>
+    
+  <select id="hitterDetail" parameterType="int" resultType="hyoja.server.board.domain.HitterVO">
+    SELECT
+        *
+    FROM hitter
+    WHERE
+        TNO = #{tno}
+  </select>
+
+  <select id="hittermainRecode" resultType="hyoja.server.board.domain.HittermainVO">
+    SELECT
+        *
+    FROM hitter JOIN hitter_main_recode
+    WHERE
+        TNO = #{tno}
+  </select>
+</mapper>

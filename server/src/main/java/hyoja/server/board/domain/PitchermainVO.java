@@ -22,126 +22,165 @@ public class PitchermainVO {
 	double fip;
 	double kfip;
 	double war;
-	
+
 	public int getId() {
-		return id;
+		return this.id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
-		return name;
+		return this.name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getTeam() {
-		return team;
+		return this.team;
 	}
+
 	public void setTeam(String team) {
 		this.team = team;
 	}
+
 	public int getWin() {
-		return win;
+		return this.win;
 	}
+
 	public void setWin(int win) {
 		this.win = win;
 	}
+
 	public int getLose() {
-		return lose;
+		return this.lose;
 	}
+
 	public void setLose(int lose) {
 		this.lose = lose;
 	}
+
 	public int getSave() {
-		return save;
+		return this.save;
 	}
+
 	public void setSave(int save) {
 		this.save = save;
 	}
+
 	public int getHold() {
-		return hold;
+		return this.hold;
 	}
+
 	public void setHold(int hold) {
 		this.hold = hold;
 	}
+
 	public int getBlown() {
-		return blown;
+		return this.blown;
 	}
+
 	public void setBlown(int blown) {
 		this.blown = blown;
 	}
+
 	public int getGame() {
-		return game;
+		return this.game;
 	}
+
 	public void setGame(int game) {
 		this.game = game;
 	}
+
 	public int getStarting_pit() {
-		return starting_pit;
+		return this.starting_pit;
 	}
+
 	public void setStarting_pit(int starting_pit) {
 		this.starting_pit = starting_pit;
 	}
+
 	public int getInning() {
-		return inning;
+		return this.inning;
 	}
+
 	public void setInning(int inning) {
 		this.inning = inning;
 	}
+
 	public int getStrikesouts() {
-		return strikesouts;
+		return this.strikesouts;
 	}
+
 	public void setStrikesouts(int strikesouts) {
 		this.strikesouts = strikesouts;
 	}
+
 	public int getBb() {
-		return bb;
+		return this.bb;
 	}
+
 	public void setBb(int bb) {
 		this.bb = bb;
 	}
+
 	public int getHr() {
-		return hr;
+		return this.hr;
 	}
+
 	public void setHr(int hr) {
 		this.hr = hr;
 	}
-	public int getLob() {
-		return lob;
+
+	public double getLob() {
+		return this.lob;
 	}
-	public void setLob(int lob) {
+
+	public void setLob(double lob) {
 		this.lob = lob;
 	}
-	public int getEra() {
-		return era;
+
+	public double getEra() {
+		return this.era;
 	}
-	public void setEra(int era) {
+
+	public void setEra(double era) {
 		this.era = era;
 	}
-	public int getRa9_war() {
-		return ra9_war;
+
+	public double getRa9_war() {
+		return this.ra9_war;
 	}
-	public void setRa9_war(int ra9_war) {
+
+	public void setRa9_war(double ra9_war) {
 		this.ra9_war = ra9_war;
 	}
-	public int getFip() {
-		return fip;
+
+	public double getFip() {
+		return this.fip;
 	}
-	public void setFip(int fip) {
+
+	public void setFip(double fip) {
 		this.fip = fip;
 	}
-	public int getKfip() {
-		return kfip;
+
+	public double getKfip() {
+		return this.kfip;
 	}
-	public void setKfip(int kfip) {
+
+	public void setKfip(double kfip) {
 		this.kfip = kfip;
 	}
-	public int getWar() {
-		return war;
+
+	public double getWar() {
+		return this.war;
 	}
-	public void setWar(int war) {
+
+	public void setWar(double war) {
 		this.war = war;
 	}
-		
+
 }
