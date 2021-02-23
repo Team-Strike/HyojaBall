@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.SeasonMapper">
+  
+  <resultMap type="SeasonVO" id="seasonBase">
+    <id column="id" property="id" />
+    <result column="team_id" property="team_id" />
+    <result column="name" property="name" />
+  </resultMap>
+
+  <resultMap type="SeasonVO" id="seasonInfo" extends="seasonBase">
+    <association property="team_recode" column="team_id" javaType="TeamVO" columnPrefix="t_" resultMap="hyoja.server.board.mapper.TeamMapper.teamInfo"></association>
+  </resultMap>
+
+
+  <select id="seasonList" resultMap="hyoja.server.board.domain.TeamVO">
+    SELECT
+        *
+    FROM team te JOIN image im on te.image_id = im.id
+  </select>
+    
+  <select id="seasonDetail" parameterType="int" resultMap="seasonInfo">
+    SELECT
+        se.*,
+        te.id as t_id,
+        te.name as t_name,
+        te.image_id as t_imaga_id,
+        te.image as t_image,
+    FROM season se JOIN team te on se.team_id = te.id
+    WHERE
+        se.id = #{sno}
+  </select>
+</mapper>
