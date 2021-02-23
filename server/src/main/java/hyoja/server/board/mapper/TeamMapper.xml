@@ -4,23 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
  
 <mapper namespace="hyoja.server.board.mapper.TeamMapper">
- <select id="teamCount" resultType="int">
-    SELECT
-     COUNT(*)
-    FROM team
-  </select>
   
+  <resultMap type="TeamVO" id="teamBase">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+  </resultMap>
+
+  <resultMap type="TeamVO" id="teamInfo" extends="teamBase">
+    <association property="image" column="image_id" javaType="ImageVO" columnPrefix="img_" resultMap="hyoja.server.board.mapper.ImageMapper.imageBase"></association>
+  </resultMap>
+
+
   <select id="teamList" resultType="hyoja.server.board.domain.TeamVO">
     SELECT
         *
-    FROM team
+    FROM team te JOIN image im on te.image_id = im.id
   </select>
     
-  <select id="teamDetail" parameterType="int" resultType="hyoja.server.board.domain.TeamVO">
+  <select id="teamDetail" parameterType="int" resultMap="teamBase">
     SELECT
-        *
-    FROM team
+        te.*,
+        im.id as img_id,
+        im.data as img_data,
+    FROM team te JOIN image im on te.image_id = im.id
     WHERE
-        TNO = #{tno}
+        id = #{tno}
   </select>
 </mapper>
