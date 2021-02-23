@@ -3,6 +3,7 @@ package hyoja.server.board.domain;
 import java.util.Date;
 
 import hyoja.server.board.domain.HittermainVO;
+import hyoja.server.board.domain.SeasonVO;
 
 public class HitterVO {
   int id;
@@ -11,7 +12,24 @@ public class HitterVO {
   String name;
   Date birthday;
   int salary;
-  HittermainVO hitter_main_recode;
+  TeamVO team_recode;
+  SeasonVO season_recode;
+
+  public SeasonVO getSeason_recode() {
+    return this.season_recode;
+  }
+
+  public void setSeason_recode(SeasonVO season_recode) {
+    this.season_recode = season_recode;
+  }
+
+  public TeamVO getTeam_recode() {
+    return this.team_recode;
+  }
+
+  public void setTeam_recode(TeamVO team_recode) {
+    this.team_recode = team_recode;
+  }
 
   public int getId() {
     return this.id;
@@ -59,14 +77,6 @@ public class HitterVO {
 
   public void setSalary(int salary) {
     this.salary = salary;
-  }
-
-  public HittermainVO getHitter_main_recode() {
-    return this.hitter_main_recode;
-  }
-
-  public void setHitter_main_recode(HittermainVO hitter_main_recode) {
-    this.hitter_main_recode = hitter_main_recode;
   }
 
 }

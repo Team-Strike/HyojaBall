@@ -3,27 +3,39 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
  
-<mapper namespace="hyoja.server.board.mapper.TeamMapper">
+<mapper namespace="hyoja.server.board.mapper.HitterMapper">
+
+  <resultMap type="HitterVO" id="hitterBase">
+    <id column="id" property="id" />
+    <result column="team_id" property="team_id" />
+    <result column="season_id" property="season_id" />
+    <result column="name" property="name" />
+    <result column="birthday" property="birthday" />
+    <result column="salary" property="salary" />
+  </resultMap>  
+
+  <resultMap type="HitterVO" id="hitterInfo" extends="hitterBase">
+    <association property="team_recode" column="team_id" javaType="TeamVO" columnPrefix="t_" resultMap="hyoja.server.board.mapper.ImageMapper.seasonInfo"></association>
+    <association property="season_recode" column="season_id" javaType="SeasonVO" columnPrefix="s_" resultMap="hyoja.server.board.mapper.SeasonMapper.seasonInfo"></association>  
+  </resultMap>  
 
   <select id="hitterList" resultType="hyoja.server.board.domain.HitterVO">
     SELECT
         *
-    FROM hitter
+    FROM team te JOIN image im on te.image_id = im.id
   </select>
     
-  <select id="hitterDetail" parameterType="int" resultType="hyoja.server.board.domain.HitterVO">
+  <select id="hitterDetail" parameterType="int" resultMap="hitterInfo">
     SELECT
-        *
-    FROM hitter
+        hi.*,
+        te.id as t_id,
+        te.name as t_name,
+        te.image_id as t_image_id,
+        se.id as s_id,
+        se.team_id as s_team_id,
+        se.name as s_name,
+    FROM hitter hi JOIN team te ON hi.team_id = te.id JOIN season se ON hi.season_id = se.id
     WHERE
-        TNO = #{tno}
-  </select>
-
-  <select id="hittermainRecode" resultType="hyoja.server.board.domain.HittermainVO">
-    SELECT
-        *
-    FROM hitter JOIN hitter_main_recode
-    WHERE
-        TNO = #{tno}
-  </select>
+        hi.id = #{hno}
+  
 </mapper>

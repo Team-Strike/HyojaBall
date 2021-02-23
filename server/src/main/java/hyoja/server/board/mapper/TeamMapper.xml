@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     FROM team te JOIN image im on te.image_id = im.id
   </select>
     
-  <select id="teamDetail" parameterType="int" resultMap="teamBase">
+  <select id="teamDetail" parameterType="int" resultMap="teamInfo">
     SELECT
         te.*,
         im.id as img_id,

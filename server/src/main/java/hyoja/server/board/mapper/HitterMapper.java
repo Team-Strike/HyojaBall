@@ -5,17 +5,14 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import hyoja.server.board.domain.HitterVO;
-import hyoja.server.board.domain.HittermainVO;
 
-@Repository("hyoja.server.board.mapper.TeamMapper")
+@Repository("hyoja.server.board.mapper.HitterMapper")
 public interface HitterMapper {
 
   // 타자 목록
   public List<HitterVO> hitterList() throws Exception;
 
   // 타자 상세
-  public HitterVO hitterDetail(int tno) throws Exception;
+  public HitterVO hitterDetail(int hno) throws Exception;
 
-  // 타자 메인 기록
-  public HittermainVO hittermainRecode() throws Exception;
 }
