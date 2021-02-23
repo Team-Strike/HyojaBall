@@ -3,8 +3,7 @@ package hyoja.server.board.domain;
 public class HittermainVO {
 
 	int id;
-	String name;
-	String team;
+	int hitter_id;
 	int game;
 	int appearance;
 	int at_bat;
@@ -20,7 +19,15 @@ public class HittermainVO {
 	double slg;
 	double ops;
 	double war;
-	HitterbasicVO hitter_basic_recode;
+	HitterVO hitter_recode;
+
+	public HitterVO getHitter_recode() {
+		return this.hitter_recode;
+	}
+
+	public void setHitter_recode(HitterVO hitter_recode) {
+		this.hitter_recode = hitter_recode;
+	}
 
 	public int getId() {
 		return this.id;
@@ -30,20 +37,12 @@ public class HittermainVO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public int getHitter_id() {
+		return this.hitter_id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTeam() {
-		return this.team;
-	}
-
-	public void setTeam(String team) {
-		this.team = team;
+	public void setHitter_id(int hitter_id) {
+		this.hitter_id = hitter_id;
 	}
 
 	public int getGame() {
@@ -164,14 +163,6 @@ public class HittermainVO {
 
 	public void setWar(double war) {
 		this.war = war;
-	}
-
-	public HitterbasicVO getHitter_basic_recode() {
-		return this.hitter_basic_recode;
-	}
-
-	public void setHitter_basic_recode(HitterbasicVO hitter_basic_recode) {
-		this.hitter_basic_recode = hitter_basic_recode;
 	}
 
 }
