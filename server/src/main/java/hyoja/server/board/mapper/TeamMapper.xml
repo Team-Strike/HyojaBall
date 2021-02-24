@@ -15,19 +15,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </resultMap>
 
 
-  <select id="teamList" resultType="hyoja.server.board.domain.TeamVO">
+  <select id="teamList" resultMap="teamInfo">
     SELECT
-        *
-    FROM team te JOIN image im on te.image_id = im.id
+        team.*,
+        image.id as img_id,
+        image.data as img_data
+    FROM team JOIN image ON team.image_id = image.id
   </select>
     
   <select id="teamDetail" parameterType="int" resultMap="teamInfo">
     SELECT
-        te.*,
-        im.id as img_id,
-        im.data as img_data,
-    FROM team te JOIN image im on te.image_id = im.id
+        team.*,
+        image.id as img_id,
+        image.data as img_data
+    FROM team JOIN image on team.image_id = image.id
     WHERE
-        id = #{tno}
+        team.id = #{tno}
   </select>
 </mapper>

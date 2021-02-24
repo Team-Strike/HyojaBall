@@ -11,35 +11,48 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
- 
+
 import hyoja.server.board.domain.TeamVO;
 import hyoja.server.board.service.TeamService;
- 
+
 @Controller
 public class TeamController {
- 
-    @Resource(name="hyoja.server.board.service.TeamService")
+
+    @Resource(name = "hyoja.server.board.service.TeamService")
     TeamService mTeamService;
-    
-    //@RequestMapping("/list") //팀 리스트 화면 호출  
-    @RequestMapping(value = "/api", method = RequestMethod.GET)
+
+    // @RequestMapping("/list") //팀 리스트 화면 호출
+    @RequestMapping(value = "/team", method = RequestMethod.GET)
     @ResponseBody
-    private List<TeamVO> teamList(Model model) throws Exception{
-        
+    private List<TeamVO> teamList(Model model) throws Exception {
+
         List<TeamVO> teamList = mTeamService.teamListService();
-        
+
         return teamList;
-        //model.addAttribute("teamlist", mTeamService.teamListService());
-        
-        //return "teamlist"; //생성할 jsp
+        // model.addAttribute("teamlist", mTeamService.teamListService());
+
+        // return "teamlist"; //생성할 jsp
     }
-    
-    @RequestMapping("/detail/{tno}") 
-    private String teamDetail(@PathVariable int tno, Model model) throws Exception{
-        
-        model.addAttribute("teamdetail", mTeamService.teamDetailService(tno));
-        
-        return "teamdetail";
+
+    /*
+     * @RequestMapping("/detail/{tno}") private String teamDetail(@PathVariable int
+     * tno, Model model) throws Exception {
+     * 
+     * model.addAttribute("teamdetail", mTeamService.teamDetailService(tno));
+     * 
+     * return "teamdetail"; }
+     */
+
+    @RequestMapping(value = "/team/{tno}", method = RequestMethod.GET)
+    @ResponseBody
+    private TeamVO teamDetail(@PathVariable int tno, Model model) throws Exception {
+
+        TeamVO teamDetail = mTeamService.teamDetailService(tno);
+
+        return teamDetail;
+        // model.addAttribute("teamlist", mTeamService.teamListService());
+
+        // return "teamlist"; //생성할 jsp
     }
-    
+
 }
