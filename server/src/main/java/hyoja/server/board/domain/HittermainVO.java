@@ -2,24 +2,24 @@ package hyoja.server.board.domain;
 
 public class HittermainVO {
 
-	int id;
-	int hitter_id;
-	int game;
-	int appearance;
-	int at_bat;
-	int hit;
-	int hr;
-	int scored;
-	int rbi;
-	int bb;
-	int strikesouts;
-	int stolen_base;
-	double batting_avg;
-	double obp;
-	double slg;
-	double ops;
-	double war;
-	HitterVO hitter_recode;
+	private int id;
+	private int hitter_id;
+	private int game;
+	private int appearance;
+	private int at_bat;
+	private int hit;
+	private int hr;
+	private int scored;
+	private int rbi;
+	private int bb;
+	private int strikesouts;
+	private int stolen_base;
+	private double batting_avg;
+	private double obp;
+	private double slg;
+	private double ops;
+	private double war;
+	private HitterVO hitter_recode;
 
 	public HitterVO getHitter_recode() {
 		return this.hitter_recode;

@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="hyoja.server.board.mapper.HittermainMapper">
 
-  <resultMap type="HittermainVO" id="hittermainBase">
+  <resultMap type="hyoja.server.board.domain.HittermainVO" id="hittermainBase">
     <id column="id" property="id" />
     <result column="hitter_id" property="hitter_id" />
     <result column="game" property="game" />
@@ -25,20 +25,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="war" property="war" />
   </resultMap>
 
-  <resultMap type="HittermainVO" id="hittermainInfo" extends="hittermainBase">
-    <association property="hitter_recode" column="hitter_id" javaType="HitterVO" columnPrefix="h_" resultMap="hyoja.server.board.mapper.HitterMapper.hitterInfo">
-    </association>
+  <resultMap type="hyoja.server.board.domain.HittermainVO" id="hittermainInfo" extends="hittermainBase">
+    <association property="hitter_recode" column="hitter_id" javaType="hyoja.server.board.domain.HitterVO" columnPrefix="h_" resultMap="hyoja.server.board.mapper.HitterMapper.hitterInfo"></association>
   </resultMap>   
 
-  <select id="teamDetail" parameterType="int" resultMap="hitterInfo">
+  <select id="hittermainList" resultMap="hittermainInfo">
     SELECT
-        tm.*,
+        hm.*,
         hi.id as h_id,
         hi.team_id as h_team_id,
         hi.season_id as h_season_id,
         hi.name as h_name,
         hi.birthday as h_birthday,
-        hi.salary as h_birthday,
+        hi.salary as salary
+    FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id
+  </select>
+
+  <select id="hittermainDetail" parameterType="int" resultMap="hittermainInfo">
+    SELECT
+        hm.*,
+        hi.id as h_id,
+        hi.team_id as h_team_id,
+        hi.season_id as h_season_id,
+        hi.name as h_name,
+        hi.birthday as h_birthday,
+        hi.salary as salary
     FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id
     WHERE
         hm.id = #{hmno}
