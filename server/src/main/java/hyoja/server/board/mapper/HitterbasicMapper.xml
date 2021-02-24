@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.HitterbasicMapper">
+
+  <resultMap type="hyoja.server.board.domain.HitterbasicVO" id="hitterbasicBase">
+    <id column="id" property="id" />
+    <result column="hitter_main_record_id" property="hitter_main_record_id" />
+    <result column="single" property="single" />
+    <result column="doubles" property="doubles" />
+    <result column="triple" property="triple" />
+    <result column="bb" property="bb" />
+    <result column="ibb" property="ibb" />
+    <result column="HBP" property="HBP" />
+    <result column="strikeouts" property="strikeouts" />
+    <result column="sac_fly" property="sac_fly" />
+    <result column="sac_bunt" property="sac_bunt" />
+    <result column="gidp" property="gidp" />
+    <result column="caught_stealing" property="caught_stealing" />
+  </resultMap>
+
+  <resultMap type="hyoja.server.board.domain.HitterbasicVO" id="hitterbasicInfo" extends="hitterbasicBase">
+    <association property="hittermain_recode" column="hitter_main_record_id" javaType="hyoja.server.board.domain.HittermainVO" columnPrefix="hm_" resultMap="hyoja.server.board.mapper.HittermainMapper.hittermainInfo"></association>
+  </resultMap>
+
+    <select id="hitterbasicList" resultMap="hitterbasicInfo">
+    SELECT
+        hb.*,
+        hm.id as hm_id,
+        hm.hitter_id as hm_hitter_id,
+        hm.game as hm_game,
+        hm.appearance as hm_apperance,
+        hm.at_bat as hm_at_bat,
+        hm.hit as hm_hit,
+        hm.hr as hm_hr,
+        hm.scored as hm_scored,
+        hm.rbi as hm_rbi,
+        hm.bb as hm_bb,
+        hm.strikesouts as hm_strikesouts,
+        hm.stolen_base as hm_stolen_base,
+        hm.batting_avg as hm_batting_avg,
+        hm.obp as hm_obp,
+        hm.slg as hm_slg,
+        hm.ops as hm_ops,
+        hm.war as hm_war
+    FROM hitter_basic_record hb JOIN hitter_main_record hm on hb.hitter_main_record_id = hm.id
+  </select>   
+
+  <select id="hitterbasicDetail" parameterType="int" resultMap="hitterbasicInfo">
+    SELECT
+        hb.*,
+        hm.id as hm_id,
+        hm.hitter_id as hm_hitter_id,
+        hm.game as hm_game,
+        hm.appearance as hm_apperance,
+        hm.at_bat as hm_at_bat,
+        hm.hit as hm_hit,
+        hm.hr as hm_hr,
+        hm.scored as hm_scored,
+        hm.rbi as hm_rbi,
+        hm.bb as hm_bb,
+        hm.strikesouts as hm_strikesouts,
+        hm.stolen_base as hm_stolen_base,
+        hm.batting_avg as hm_batting_avg,
+        hm.obp as hm_obp,
+        hm.slg as hm_slg,
+        hm.ops as hm_ops,
+        hm.war as hm_war
+    FROM hitter_basic_record hb JOIN hitter_main_record hm on hb.hitter_main_record_id = hm.id
+    WHERE
+        hb.id = #{hbno}
+  </select>
+  
+</mapper>
