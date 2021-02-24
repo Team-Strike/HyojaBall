@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.HitterMapper">
+
+  <resultMap type="hyoja.server.board.domain.HitterVO" id="hitterBase">
+    <id column="id" property="id" />
+    <result column="team_id" property="team_id" />
+    <result column="season_id" property="season_id" />
+    <result column="name" property="name" />
+    <result column="birthday" property="birthday" />
+    <result column="salary" property="salary" />
+  </resultMap>  
+
+  <resultMap type="hyoja.server.board.domain.HitterVO" id="hitterInfo" extends="hitterBase">
+    <association property="team_recode" column="team_id" javaType="hyoja.server.board.domain.TeamVO" columnPrefix="t_" resultMap="hyoja.server.board.mapper.TeamMapper.teamInfo"></association>
+    <association property="season_recode" column="season_id" javaType="hyoja.server.board.domain.SeasonVO" columnPrefix="s_" resultMap="hyoja.server.board.mapper.SeasonMapper.seasonInfo"></association>  
+  </resultMap>  
+
+  <select id="hitterList" resultMap="hitterInfo">
+    SELECT
+        hitter.*,
+        team.id as t_id,
+        team.name as t_name,
+        team.image_id as t_image_id,
+        season.id as s_id,
+        season.team_id as s_team_id,
+        season.name as s_name
+    FROM hitter JOIN team ON hitter.team_id = team.id JOIN season ON hitter.season_id = season.id
+  </select>
+    
+  <select id="hitterDetail" parameterType="int" resultMap="hitterInfo">
+    SELECT
+        hitter.*,
+        team.id as t_id,
+        team.name as t_name,
+        team.image_id as t_image_id,
+        season.id as s_id,
+        season.team_id as s_team_id,
+        season.name as s_name
+    FROM hitter JOIN team ON hitter.team_id = team.id JOIN season ON hitter.season_id = season.id
+    WHERE
+        hitter.id = #{hno}
+  </select>    
+  
+</mapper>

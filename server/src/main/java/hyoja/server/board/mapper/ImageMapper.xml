@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.ImageMapper">
+  
+  <resultMap type="hyoja.server.board.domain.ImageVO" id="imageBase">
+    <id column="id" property="id"/>
+    <result column="data" property="data"/>
+  </resultMap>
+
+  <select id="imageList" resultType="hyoja.server.board.domain.ImageVO">
+    SELECT
+        *
+    FROM image
+  </select>
+    
+  <select id="imageDetail" parameterType="int" resultMap="imageBase">
+    SELECT
+        *
+    FROM image
+    WHERE
+        id = #{ino}
+  </select>
+  
+</mapper>

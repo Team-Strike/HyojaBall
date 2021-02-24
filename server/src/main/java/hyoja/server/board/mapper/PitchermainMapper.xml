@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.PitchermainMapper">
+
+  <resultMap type="hyoja.server.board.domain.PitchermainVO" id="pitchermainBase">
+    <id column="id" property="id" />
+    <result column="pitcher_id" property="pitcher_id" />
+    <result column="win" property="win" />
+    <result column="lose" property="lose" />
+    <result column="save" property="save" />
+    <result column="hold" property="hold" />
+    <result column="blown" property="blown" />
+    <result column="game" property="game" />
+    <result column="starting_pit" property="starting_pit" />
+    <result column="inning" property="inning" />
+    <result column="strikesouts" property="strikesouts" />
+    <result column="bb" property="bb" />
+    <result column="hr" property="hr" />
+    <result column="lob" property="lob" />
+    <result column="era" property="era" />
+    <result column="ra9_war" property="ra9_war" />
+    <result column="fip" property="fip" />
+    <result column="kfip" property="kfip" />
+    <result column="war" property="war" />
+  </resultMap>
+
+  <resultMap type="hyoja.server.board.domain.PitchermainVO" id="pitchermainInfo" extends="pitchermainBase">
+    <association property="pitcher_recode" column="pitcher_id" javaType="hyoja.server.board.domain.PitcherVO" columnPrefix="p_" resultMap="hyoja.server.board.mapper.PitcherMapper.pitcherInfo"></association>
+  </resultMap>   
+
+  <select id="pitchermainList" resultMap="pitchermainInfo">
+    SELECT
+        pm.*,
+        pi.id as h_id,
+        pi.team_id as h_team_id,
+        pi.season_id as h_season_id,
+        pi.name as h_name,
+        pi.birthday as h_birthday,
+        pi.salary as salary
+    FROM pitcher_main_record pm JOIN pitcher pi on pm.pitcher_id = pi.id
+  </select>
+
+  <select id="pitchermainDetail" parameterType="int" resultMap="pitchermainInfo">
+    SELECT
+        pm.*,
+        pi.id as h_id,
+        pi.team_id as h_team_id,
+        pi.season_id as h_season_id,
+        pi.name as h_name,
+        pi.birthday as h_birthday,
+        pi.salary as salary
+    FROM pitcher_main_record pm JOIN pitcher pi on pm.pitcher_id = pi.id
+    WHERE
+        pm.id = #{pmno}
+  </select>
+  
+</mapper>

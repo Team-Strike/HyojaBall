@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="hyoja.server.board.mapper.HittermainMapper">
+
+  <resultMap type="hyoja.server.board.domain.HittermainVO" id="hittermainBase">
+    <id column="id" property="id" />
+    <result column="hitter_id" property="hitter_id" />
+    <result column="game" property="game" />
+    <result column="appearance" property="appearance" />
+    <result column="at_bat" property="at_bat" />
+    <result column="hit" property="hit" />
+    <result column="hr" property="hr" />
+    <result column="scored" property="scored" />
+    <result column="rbi" property="rbi" />
+    <result column="bb" property="bb" />
+    <result column="strikesouts" property="strikesouts" />
+    <result column="stolen_base" property="stolen_base" />
+    <result column="batting_avg" property="batting_avg" />
+    <result column="obp" property="obp" />
+    <result column="slg" property="slg" />
+    <result column="ops" property="ops" />
+    <result column="war" property="war" />
+  </resultMap>
+
+  <resultMap type="hyoja.server.board.domain.HittermainVO" id="hittermainInfo" extends="hittermainBase">
+    <association property="hitter_recode" column="hitter_id" javaType="hyoja.server.board.domain.HitterVO" columnPrefix="h_" resultMap="hyoja.server.board.mapper.HitterMapper.hitterInfo"></association>
+  </resultMap>   
+
+  <select id="hittermainList" resultMap="hittermainInfo">
+    SELECT
+        hm.*,
+        hi.id as h_id,
+        hi.team_id as h_team_id,
+        hi.season_id as h_season_id,
+        hi.name as h_name,
+        hi.birthday as h_birthday,
+        hi.salary as salary
+    FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id
+  </select>
+
+  <select id="hittermainDetail" parameterType="int" resultMap="hittermainInfo">
+    SELECT
+        hm.*,
+        hi.id as h_id,
+        hi.team_id as h_team_id,
+        hi.season_id as h_season_id,
+        hi.name as h_name,
+        hi.birthday as h_birthday,
+        hi.salary as salary
+    FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id
+    WHERE
+        hm.id = #{hmno}
+  </select>
+  
+</mapper>
