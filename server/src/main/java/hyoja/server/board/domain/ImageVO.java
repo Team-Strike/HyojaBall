@@ -1,8 +1,23 @@
 package hyoja.server.board.domain;
 
-import java.sql.Blob;
-
 public class ImageVO {
-  int id;
-  Blob data;
+  private int id;
+  private byte[] data;
+
+  public int getId() {
+    return this.id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public byte[] getData() {
+    return this.data;
+  }
+
+  public void setData(byte[] data) {
+    this.data = data;
+  }
+
 }

@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="hyoja.server.board.mapper.ImageMapper">
   
-  <resultMap type="ImageVO" id="imageBase">
-    <id column="id" property="id" />
-    <result column="data" property="data" />
+  <resultMap type="hyoja.server.board.domain.ImageVO" id="imageBase">
+    <id column="id" property="id"/>
+    <result column="data" property="data"/>
   </resultMap>
 
   <select id="imageList" resultType="hyoja.server.board.domain.ImageVO">
