@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <resultMap type="hyoja.server.board.domain.TeamVO" id="teamBase">
     <id column="id" property="id" />
     <result column="name" property="name" />
+    <result column="image_id" property="image_id" />
   </resultMap>
 
   <resultMap type="hyoja.server.board.domain.TeamVO" id="teamInfo" extends="teamBase">
