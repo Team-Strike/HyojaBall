@@ -15,7 +15,7 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - 8080:80
+      - 8081:80
     env_file: 
       - ./settings/dev/.env.pma
     depends_on:
@@ -25,15 +25,26 @@ services:
     build: ./nginx
     ports:
       - 80:8000
-    
-  # client:
-  #   build:
-  #     context: ./client
-  #   command: ["npm", "start"]
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #   tty: true
+    volumes:
+      - build_folder:/var/www/client
+    depends_on: 
+      - client
+      - spring-boot
+
+  client:
+    build:
+      context: ./client
+      args:
+        API_URL: '*'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client/:/client
+      - build_folder:/client/build
+      - ./client/node_modules/:/client/node_modules
+    environment: 
+      - CI=true
+    tty: true
 
   spring-boot:
     restart: always
@@ -51,3 +62,4 @@ services:
 volumes:
   mysql_data:
   springdata:
+  build_folder:
