@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="hyoja.server.board.mapper.HitterMapper">
 
-  <resultMap type="HitterVO" id="hitterBase">
+  <resultMap type="hyoja.server.board.domain.HitterVO" id="hitterBase">
     <id column="id" property="id" />
     <result column="team_id" property="team_id" />
     <result column="season_id" property="season_id" />
@@ -14,28 +14,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="salary" property="salary" />
   </resultMap>  
 
-  <resultMap type="HitterVO" id="hitterInfo" extends="hitterBase">
-    <association property="team_recode" column="team_id" javaType="TeamVO" columnPrefix="t_" resultMap="hyoja.server.board.mapper.ImageMapper.seasonInfo"></association>
-    <association property="season_recode" column="season_id" javaType="SeasonVO" columnPrefix="s_" resultMap="hyoja.server.board.mapper.SeasonMapper.seasonInfo"></association>  
+  <resultMap type="hyoja.server.board.domain.HitterVO" id="hitterInfo" extends="hitterBase">
+    <association property="team_recode" column="team_id" javaType="hyoja.server.board.domain.TeamVO" columnPrefix="t_" resultMap="hyoja.server.board.mapper.TeamMapper.teamInfo"></association>
+    <association property="season_recode" column="season_id" javaType="hyoja.server.board.domain.SeasonVO" columnPrefix="s_" resultMap="hyoja.server.board.mapper.SeasonMapper.seasonInfo"></association>  
   </resultMap>  
 
-  <select id="hitterList" resultType="hyoja.server.board.domain.HitterVO">
+  <select id="hitterList" resultMap="hitterInfo">
     SELECT
-        *
-    FROM team te JOIN image im on te.image_id = im.id
+        hitter.*,
+        team.id as t_id,
+        team.name as t_name,
+        team.image_id as t_image_id,
+        season.id as s_id,
+        season.team_id as s_team_id,
+        season.name as s_name
+    FROM hitter JOIN team ON hitter.team_id = team.id JOIN season ON hitter.season_id = season.id
   </select>
     
   <select id="hitterDetail" parameterType="int" resultMap="hitterInfo">
     SELECT
-        hi.*,
-        te.id as t_id,
-        te.name as t_name,
-        te.image_id as t_image_id,
-        se.id as s_id,
-        se.team_id as s_team_id,
-        se.name as s_name,
-    FROM hitter hi JOIN team te ON hi.team_id = te.id JOIN season se ON hi.season_id = se.id
+        hitter.*,
+        team.id as t_id,
+        team.name as t_name,
+        team.image_id as t_image_id,
+        season.id as s_id,
+        season.team_id as s_team_id,
+        season.name as s_name
+    FROM hitter JOIN team ON hitter.team_id = team.id JOIN season ON hitter.season_id = season.id
     WHERE
-        hi.id = #{hno}
+        hitter.id = #{hno}
+  </select>    
   
 </mapper>
