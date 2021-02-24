@@ -5,7 +5,7 @@ public class TeamVO {
 	private int id;
 	private String name;
 	private int image_id;
-	ImageVO image;
+	private ImageVO image;
 
 	public int getId() {
 		return this.id;

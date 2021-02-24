@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="hyoja.server.board.mapper.TeamMapper">
   
-  <resultMap type="TeamVO" id="teamBase">
+  <resultMap type="hyoja.server.board.domain.TeamVO" id="teamBase">
     <id column="id" property="id" />
     <result column="name" property="name" />
   </resultMap>
 
-  <resultMap type="TeamVO" id="teamInfo" extends="teamBase">
-    <association property="image" column="image_id" javaType="ImageVO" columnPrefix="img_" resultMap="hyoja.server.board.mapper.ImageMapper.imageBase"></association>
+  <resultMap type="hyoja.server.board.domain.TeamVO" id="teamInfo" extends="teamBase">
+    <association property="image" column="image_id" javaType="hyoja.server.board.domain.ImageVO" columnPrefix="img_" resultMap="hyoja.server.board.mapper.ImageMapper.imageBase"></association>
   </resultMap>
 
 
