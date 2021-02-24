@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import hyoja.server.board.domain.SeasonVO;
 
-@Repository("hyoja.server.board.mapper.TeamMapper")
+@Repository("hyoja.server.board.mapper.SeasonMapper")
 public interface SeasonMapper {
 
   // 시즌

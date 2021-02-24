@@ -1,10 +1,10 @@
 package hyoja.server.board.domain;
 
 public class SeasonVO {
-  int id;
-  int team_id;
-  String name;
-  TeamVO team_recode;
+  private int id;
+  private int team_id;
+  private String name;
+  private TeamVO team_recode;
 
   public int getId() {
     return this.id;
