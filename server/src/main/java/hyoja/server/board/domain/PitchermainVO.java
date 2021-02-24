@@ -2,26 +2,26 @@ package hyoja.server.board.domain;
 
 public class PitchermainVO {
 
-	int id;
-	String name;
-	String team;
-	int win;
-	int lose;
-	int save;
-	int hold;
-	int blown;
-	int game;
-	int starting_pit;
-	int inning;
-	int strikesouts;
-	int bb;
-	int hr;
-	double lob;
-	double era;
-	double ra9_war;
-	double fip;
-	double kfip;
-	double war;
+	private int id;
+	private int pitcher_id;
+	private int win;
+	private int lose;
+	private int save;
+	private int hold;
+	private int blown;
+	private int game;
+	private int starting_pit;
+	private int inning;
+	private int strikesouts;
+	private int bb;
+	private int hr;
+	private double lob;
+	private double era;
+	private double ra9_war;
+	private double fip;
+	private double kfip;
+	private double war;
+	private PitcherVO pitcher_recode;
 
 	public int getId() {
 		return this.id;
@@ -31,20 +31,12 @@ public class PitchermainVO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return this.name;
+	public int getPitcher_id() {
+		return this.pitcher_id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getTeam() {
-		return this.team;
-	}
-
-	public void setTeam(String team) {
-		this.team = team;
+	public void setPitcher_id(int pitcher_id) {
+		this.pitcher_id = pitcher_id;
 	}
 
 	public int getWin() {
@@ -181,6 +173,14 @@ public class PitchermainVO {
 
 	public void setWar(double war) {
 		this.war = war;
+	}
+
+	public PitcherVO getPitcher_recode() {
+		return this.pitcher_recode;
+	}
+
+	public void setPitcher_recode(PitcherVO pitcher_recode) {
+		this.pitcher_recode = pitcher_recode;
 	}
 
 }
