@@ -1,0 +1,53 @@
+div.player_info1 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  font-size: 30px;
+}
+div.player_name {
+  display: inline-block;
+}
+div.player_birth {
+  display: inline-block;
+  margin-left: 200px;
+}
+div.player_pay {
+  display: inline-block;
+  margin-left: 200px;
+}
+
+div.player_info2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1300px;
+  height: 300px;
+}
+
+div.player_graph {
+  box-sizing: border-box;
+  float: left;
+  width: 800px;
+  height: 300px;
+  background-color: aliceblue;
+}
+
+div.player_eva {
+  box-sizing: border-box;
+  font-size: 40px;
+}
+
+div.player_detail {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1300px;
+  height: 300px;
+  background-color: aliceblue;
+}
+div.player_option {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1300px;
+  text-align: right;
+  font-size: 20px;
+}
