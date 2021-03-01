@@ -1,0 +1,30 @@
+div.team_info {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  height: 100px;
+  background-color: rgb(236, 236, 236);
+  border-radius: 7px;
+}
+div.team_option {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 20px;
+  width: 1000px;
+}
+div.team_player {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  height: 500px;
+  background-color: rgb(236, 236, 236);
+  border-radius: 7px;
+}
+select.team_year {
+  float: right;
+  width: 80px;
+  height: 25px;
+  font-size: 20px;
+}
