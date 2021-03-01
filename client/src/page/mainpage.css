@@ -12,6 +12,7 @@ input.search_box {
   height: 60px;
   font-size: 25px;
   border-radius: 7px;
+  border: none;
 }
 
 div.top_rate {

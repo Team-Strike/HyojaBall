@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <div className="header">
-      <h1>Hyoja Ball</h1>
+      <h1 href="/">Hyoja Ball</h1>
       <div className="nav">
         <div className="team_name">
           <a>Home &nbsp;</a>
