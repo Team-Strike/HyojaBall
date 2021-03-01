@@ -1,0 +1,52 @@
+div.search_form {
+  font-size: 23px;
+  font-weight: bold;
+}
+input.search_box {
+  background-color: rgb(236, 236, 236);
+  background-image: url("./img/search_logo.JPG");
+  background-position: 900px center;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  width: 940px;
+  height: 60px;
+  font-size: 25px;
+  border-radius: 7px;
+}
+
+div.top_rate {
+  display: inline-block;
+}
+
+div.top_war {
+  display: inline-block;
+  background-color: rgb(236, 236, 236);
+  border-radius: 12px;
+  width: 300px;
+  height: 350px;
+  margin-left: 45px;
+}
+div.top_pay {
+  display: inline-block;
+  background-color: rgb(236, 236, 236);
+  border-radius: 12px;
+  width: 300px;
+  height: 350px;
+  margin-left: 45px;
+}
+div.top_hit {
+  display: inline-block;
+  background-color: rgb(236, 236, 236);
+  border-radius: 12px;
+  width: 300px;
+  height: 350px;
+  margin-left: 45px;
+}
+div.top_win {
+  display: inline-block;
+  background-color: rgb(236, 236, 236);
+  border-radius: 12px;
+  width: 300px;
+  height: 350px;
+  margin-left: 45px;
+}

@@ -1,0 +1,33 @@
+div.header {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.nav {
+  background-color: rgb(174, 193, 198);
+  width: 1300px;
+  height: 60px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 7px;
+}
+
+div.team_name {
+  width: 1300px;
+  line-height: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+a:hover {
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  background-color: transparent;
+  text-decoration: none;
+}
