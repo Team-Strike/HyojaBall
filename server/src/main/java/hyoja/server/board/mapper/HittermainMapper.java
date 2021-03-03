@@ -15,4 +15,10 @@ public interface HittermainMapper {
   // 타자 메인 기록 상세
   public HittermainVO hittermainDetail(int hmno) throws Exception;
 
+  // hittermainList_team_year 해당 팀의 해당 년도 타자 메인 기록 리스트
+  /*
+   * public List<HittermainVO> hittermainList_team_year(String team, String year)
+   * throws Exception;
+   */
+
 }

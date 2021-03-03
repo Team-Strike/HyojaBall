@@ -4,18 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
  
 <mapper namespace="hyoja.server.board.mapper.TeamMapper">
-  
+  <!--
   <resultMap type="hyoja.server.board.domain.TeamVO" id="teamBase">
     <id column="id" property="id" />
     <result column="name" property="name" />
     <result column="image_id" property="image_id" />
   </resultMap>
-
+  
   <resultMap type="hyoja.server.board.domain.TeamVO" id="teamInfo" extends="teamBase">
     <association property="image" column="image_id" javaType="hyoja.server.board.domain.ImageVO" columnPrefix="img_" resultMap="hyoja.server.board.mapper.ImageMapper.imageBase"></association>
   </resultMap>
-
-
+  
   <select id="teamList" resultMap="teamInfo">
     SELECT
         team.*,
@@ -33,4 +32,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE
         team.id = #{tno}
   </select>
+  -->
+  <resultMap type="hyoja.server.board.domain.TeamVO" id="teamteam">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="image_id" property="image_id" />
+    <collection property="image" resultMap="hyoja.server.board.mapper.ImageMapper.imageBase" />
+  </resultMap>
+
+  <select id="teamList" resultMap="teamteam">
+    SELECT
+        team.*,
+        image.id,
+        image.data
+    FROM team JOIN image ON team.image_id = image.id
+  </select>
+    
+  <select id="teamDetail" parameterType="int" resultMap="teamteam">
+    SELECT
+        team.*,
+        image.id,
+        image.data
+    FROM team JOIN image ON team.image_id = image.id
+    WHERE
+        team.id = #{tno}
+  </select>
+
 </mapper>
