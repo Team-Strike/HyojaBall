@@ -34,27 +34,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="pitchermainList" resultMap="pitchermainInfo">
     SELECT
         pm.*,
-        pi.id as h_id,
-        pi.team_id as h_team_id,
-        pi.season_id as h_season_id,
-        pi.name as h_name,
-        pi.birthday as h_birthday,
-        pi.salary as salary
+        pi.id as p_id,
+        pi.team_id as p_team_id,
+        pi.season_id as p_season_id,
+        pi.name as p_name,
+        pi.birthday as p_birthday,
+        pi.salary as p_salary
     FROM pitcher_main_record pm JOIN pitcher pi on pm.pitcher_id = pi.id
   </select>
 
   <select id="pitchermainDetail" parameterType="int" resultMap="pitchermainInfo">
     SELECT
         pm.*,
-        pi.id as h_id,
-        pi.team_id as h_team_id,
-        pi.season_id as h_season_id,
-        pi.name as h_name,
-        pi.birthday as h_birthday,
-        pi.salary as salary
+        pi.id as p_id,
+        pi.team_id as p_team_id,
+        pi.season_id as p_season_id,
+        pi.name as p_name,
+        pi.birthday as p_birthday,
+        pi.salary as p_salary
     FROM pitcher_main_record pm JOIN pitcher pi on pm.pitcher_id = pi.id
     WHERE
         pm.id = #{pmno}
+  </select>
+
+  <select id="pitchermainList_team_season" resultMap="pitchermainInfo">
+    SELECT
+        pm.*,
+        pi.id as p_id,
+        pi.team_id as p_team_id,
+        pi.season_id as p_season_id,
+        pi.name as p_name,
+        pi.birthday as p_birthday,
+        pi.salary as p_salary,
+        team.id as p_t_id,
+        team.name as p_t_name,
+        team.image_id as p_t_image_id,
+        season.id as p_s_id,
+        season.team_id as p_s_team_id,
+        season.name as p_s_name
+    FROM pitcher_main_record pm JOIN pitcher pi on pm.pitcher_id = pi.id JOIN team on pi.team_id = team.id JOIN season on pi.season_id = season.id
+    WHERE
+        team.name = #{team} AND season.name = #{season}
   </select>
   
 </mapper>

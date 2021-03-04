@@ -39,4 +39,15 @@ public class PitcherbasicController {
     return pitcherbasicDetail;
   }
 
+  @RequestMapping(value = "/pitcherbasic/{team}/{season}", method = RequestMethod.GET)
+  @ResponseBody
+  private List<PitcherbasicVO> pitcherbasicList_team_season(@PathVariable String team, @PathVariable String season,
+      Model model) throws Exception {
+
+    List<PitcherbasicVO> pitcherbasicList_team_season = mPitcherbasicService.pitcherbasicList_team_seasonService(team,
+        season);
+
+    return pitcherbasicList_team_season;
+  }
+
 }

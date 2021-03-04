@@ -12,4 +12,6 @@ public interface PitcherbasicMapper {
   public List<PitcherbasicVO> pitcherbasicList() throws Exception;
 
   public PitcherbasicVO pitcherbasicDetail(int pbno) throws Exception;
+
+  public List<PitcherbasicVO> pitcherbasicList_team_season(String team, String season) throws Exception;
 }

@@ -24,4 +24,10 @@ public class PitchermainService {
 
     return mPitchermainMapper.pitchermainDetail(pmno);
   }
+
+  // pitchermainList_team_seasonService
+  public List<PitchermainVO> pitchermainList_team_seasonService(String team, String season) throws Exception {
+
+    return mPitchermainMapper.pitchermainList_team_season(team, season);
+  }
 }

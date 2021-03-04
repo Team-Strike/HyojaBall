@@ -15,4 +15,6 @@ public interface PitchermainMapper {
   // 투수 메인 기록 상세
   public PitchermainVO pitchermainDetail(int pmno) throws Exception;
 
+  // pitchermainList_team_season
+  public List<PitchermainVO> pitchermainList_team_season(String team, String season) throws Exception;
 }

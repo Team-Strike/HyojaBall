@@ -80,5 +80,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE
         pb.id = #{pbno}
   </select>
+
+    <select id="pitcherbasicList_team_season" resultMap="pitcherbasicInfo">
+    SELECT
+        pb.*,
+        pm.id as pm_id,
+        pm.pitcher_id as pm_pitcher_id,
+        pm.win as pm_win,
+        pm.lose as pm_lose,
+        pm.save as pm_save,
+        pm.hold as pm_hold,
+        pm.blown as pm_blown,
+        pm.game as pm_game,
+        pm.starting_pit as pm_starting_pit,
+        pm.inning as pm_inning,
+        pm.strikesouts as pm_strikesouts,
+        pm.bb as pm_bb,
+        pm.hr as pm_hr,
+        pm.lob as pm_lob,
+        pm.era as pm_era,
+        pm.ra9_war as pm_ra9_war,
+        pm.fip as pm_fip,
+        pm.kfip as pm_kfip,
+        pi.id as pm_p_id,
+        pi.team_id as pm_p_team_id,
+        pi.season_id as pm_p_season_id,
+        pi.name as pm_p_name,
+        pi.birthday as pm_p_birthday,
+        pi.salary as pm_p_salary,
+        team.id as pm_p_t_id,
+        team.name as pm_p_t_name,
+        team.image_id as pm_p_t_image_id,
+        season.id as pm_p_s_id,
+        season.team_id as pm_p_s_team_id,
+        season.name as pm_p_s_name
+    FROM pitcher_basic_record pb JOIN pitcher_main_record pm on pb.pitcher_main_record_id = pm.id JOIN pitcher pi on pm.pitcher_id = pi.id JOIN team on pi.team_id = team.id JOIN season on pi.season_id = season.id
+    WHERE
+        team.name = #{team} AND season.name = #{season}
+  </select>
   
 </mapper>
