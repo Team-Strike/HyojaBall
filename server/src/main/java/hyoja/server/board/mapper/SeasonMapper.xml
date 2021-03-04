@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  
 <mapper namespace="hyoja.server.board.mapper.SeasonMapper">
   
+  
   <resultMap type="hyoja.server.board.domain.SeasonVO" id="seasonBase">
     <id column="id" property="id" />
     <result column="team_id" property="team_id" />
@@ -21,7 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         season.*,
         team.id as t_id,
         team.name as t_name,
-        team.image_id as t_image_id
+        team.image_id as t_image_id,
+        image.id as t_img_id,
+        image.data as t_img_data
     FROM season JOIN team on season.team_id = team.id JOIN image on team.image_id = image.id
   </select>
     
@@ -30,9 +33,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         season.*,
         team.id as t_id,
         team.name as t_name,
-        team.image_id as t_image_id
+        team.image_id as t_image_id,
+        image.id as t_img_id,
+        image.data as t_img_data
     FROM season JOIN team on season.team_id = team.id JOIN image ON team.image_id = image.id
     WHERE
         season.id = #{sno}
   </select>
+
+
+<!--
+  <resultMap type="hyoja.server.board.domain.SeasonVO" id="seasonInfo">
+    <id column="id" property="id" />
+    <result column="team_id" property="team_id" />
+    <result column="name" property="name" />
+    <collection property="team_recode" resultMap="hyoja.server.board.mapper.TeamMapper.teamInfo" />
+  </resultMap>
+
+  <select id="seasonList" resultMap="seasonInfo">
+    SELECT
+        season.*,
+        team.id,
+        team.name,
+        team.image_id
+    FROM season JOIN team on season.team_id = team.id JOIN image on team.image_id = image.id
+  </select>
+    
+  <select id="seasonDetail" parameterType="int" resultMap="seasonInfo">
+    SELECT
+        season.*,
+        team.id,
+        team.name,
+        team.image_id,
+        image.id,
+        image.data
+    FROM season JOIN team on season.team_id = team.id JOIN image on team.image_id = image.id
+    WHERE
+        season.id = #{sno}
+
+       
+  </select>  
+--> 
 </mapper>
