@@ -49,14 +49,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         hi.season_id as h_season_id,
         hi.name as h_name,
         hi.birthday as h_birthday,
-        hi.salary as salary
+        hi.salary as h_salary
     FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id
     WHERE
         hm.id = #{hmno}
   </select>
 
-  <!--
-  <select id="hittermainList_team_year" resultMap="hittermainInfo">
+  <select id="hittermainList_team_season" resultMap="hittermainInfo">
     SELECT
         hm.*,
         hi.id as h_id,
@@ -64,12 +63,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         hi.season_id as h_season_id,
         hi.name as h_name,
         hi.birthday as h_birthday,
-        hi.salary as salary
+        hi.salary as h_salary,
+        team.id as h_t_id,
+        team.name as h_t_name,
+        team.image_id as h_t_image_id,
+        season.id as h_s_id,
+        season.team_id as h_s_team_id,
+        season.name as h_s_name
     FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id JOIN team on hi.team_id = team.id JOIN season on hi.season_id = season.id
     WHERE
-        team.name = #{team}
-        season.id = #{year}
+        team.name = #{team} AND season.name = #{season}
   </select>
-  -->
+  
   
 </mapper>

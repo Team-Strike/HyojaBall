@@ -72,5 +72,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE
         hb.id = #{hbno}
   </select>
+
+  <select id="hitterbasicList_team_season" resultMap="hitterbasicInfo">
+    SELECT
+        hb.*,
+        hm.id as hm_id,
+        hm.hitter_id as hm_hitter_id,
+        hm.game as hm_game,
+        hm.appearance as hm_apperance,
+        hm.at_bat as hm_at_bat,
+        hm.hit as hm_hit,
+        hm.hr as hm_hr,
+        hm.scored as hm_scored,
+        hm.rbi as hm_rbi,
+        hm.bb as hm_bb,
+        hm.strikesouts as hm_strikesouts,
+        hm.stolen_base as hm_stolen_base,
+        hm.batting_avg as hm_batting_avg,
+        hm.obp as hm_obp,
+        hm.slg as hm_slg,
+        hm.ops as hm_ops,
+        hm.war as hm_war,
+        hi.id as hm_h_id,
+        hi.team_id as hm_h_team_id,
+        hi.season_id as hm_h_season_id,
+        hi.name as hm_h_name,
+        hi.birthday as hm_h_birthday,
+        hi.salary as hm_h_salary,
+        team.id as hm_h_t_id,
+        team.name as hm_h_t_name,
+        team.image_id as hm_h_t_image_id,
+        season.id as hm_h_s_id,
+        season.team_id as hm_h_s_team_id,
+        season.name as hm_h_s_name
+    FROM hitter_basic_record hb JOIN hitter_main_record hm on hb.hitter_main_record_id = hm.id JOIN hitter hi on hm.hitter_id = hi.id JOIN team on hi.team_id = team.id JOIN season on hi.season_id = season.id
+    WHERE
+        team.name = #{team} AND season.name = #{season}
+  </select>
   
 </mapper>

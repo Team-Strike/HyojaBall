@@ -25,11 +25,9 @@ public class HittermainService {
     return mHittermainMapper.hittermainDetail(hmno);
   }
 
-  // hittermainList_team_year
-  /*
-   * public List<HittermainVO> hittermainList_team_year(String team, String year)
-   * throws Exception {
-   * 
-   * return mHittermainMapper.hittermainList_team_year(team, year); }
-   */
+  // hittermainList_team_season
+  public List<HittermainVO> hittermainList_team_season(String team, String season) throws Exception {
+
+    return mHittermainMapper.hittermainList_team_season(team, season);
+  }
 }

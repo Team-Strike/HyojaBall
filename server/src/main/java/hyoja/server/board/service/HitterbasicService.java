@@ -24,4 +24,9 @@ public class HitterbasicService {
 
     return mHitterbasicMapper.hitterbasicDetail(hbno);
   }
+
+  public List<HitterbasicVO> hitterbasicList_team_seasonService(String team, String season) throws Exception {
+
+    return mHitterbasicMapper.hitterbasicList_team_season(team, season);
+  }
 }

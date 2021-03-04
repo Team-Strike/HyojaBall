@@ -39,18 +39,14 @@ public class HittermainController {
     return hittermainDetail;
   }
 
-  /*
-   * @RequestMapping(value = "/hittermain/{team}/{year}", method =
-   * RequestMethod.GET)
-   * 
-   * @ResponseBody private List<HittermainVO>
-   * hittermainList_team_year(@PathVariable String team, @PathVariable String
-   * year, Model model) throws Exception {
-   * 
-   * List<HittermainVO> hittermainList_team_year =
-   * mHittermainService.hittermainList_team_year(team, year);
-   * 
-   * return hittermainList_team_year; }
-   */
+  @RequestMapping(value = "/hittermain/{team}/{season}", method = RequestMethod.GET)
+  @ResponseBody
+  private List<HittermainVO> hittermainList_team_season(@PathVariable String team, @PathVariable String season,
+      Model model) throws Exception {
+
+    List<HittermainVO> hittermainList_team_season = mHittermainService.hittermainList_team_season(team, season);
+
+    return hittermainList_team_season;
+  }
 
 }

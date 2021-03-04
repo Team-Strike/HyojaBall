@@ -13,4 +13,6 @@ public interface HitterbasicMapper {
 
   // 타자 기본 기록 상세
   public HitterbasicVO hitterbasicDetail(int hbno) throws Exception;
+
+  public List<HitterbasicVO> hitterbasicList_team_season(String team, String season) throws Exception;
 }
