@@ -98,9 +98,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       game INT NOT NULL,
       starting_pit INT NOT NULL, <!-- 선발 -->
       inning INT NOT NULL, <!-- 이닝 -->
-      strikesouts INT NOT NULL,  <!-- 삼진 -->
-      bb INT NOT NULL, <!-- 볼넷 -->
-      hr INT NOT NULL, <!-- 홈런 -->
+      strikesouts DOUBLE NOT NULL,  <!-- 삼진 -->
+      bb DOUBLE NOT NULL, <!-- 볼넷 -->
+      hr DOUBLE NOT NULL, <!-- 홈런 -->
       lob DOUBLE NOT NULL,
       era DOUBLE NOT NULL,
       ra9_war DOUBLE NOT NULL,
@@ -121,10 +121,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       single INT NOT NULL,
       doubles INT NOT NULL,
       triple INT NOT NULL,
-      bb INT NOT NULL, <!-- 볼넷 -->
       ibb INT NOT NULL, <!-- 고의4구 -->
       HBP INT NOT NULL, <!-- 데드볼 -->
-      strikeouts INT NOT NULL, <!-- 삼진 -->
       sac_fly INT NOT NULL, <!-- 희생플라이 -->
       sac_bunt INT NOT NULL,<!-- 희생 플라이 -->
       gidp INT NOT NULL, <!-- 병살타 -->
