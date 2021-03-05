@@ -12,9 +12,9 @@ public class PitchermainVO {
 	private int game;
 	private int starting_pit;
 	private int inning;
-	private int strikesouts;
-	private int bb;
-	private int hr;
+	private double strikesouts;
+	private double bb;
+	private double hr;
 	private double lob;
 	private double era;
 	private double ra9_war;
@@ -103,7 +103,7 @@ public class PitchermainVO {
 		this.inning = inning;
 	}
 
-	public int getStrikesouts() {
+	public double getStrikesouts() {
 		return this.strikesouts;
 	}
 
@@ -111,7 +111,7 @@ public class PitchermainVO {
 		this.strikesouts = strikesouts;
 	}
 
-	public int getBb() {
+	public double getBb() {
 		return this.bb;
 	}
 
@@ -119,7 +119,7 @@ public class PitchermainVO {
 		this.bb = bb;
 	}
 
-	public int getHr() {
+	public double getHr() {
 		return this.hr;
 	}
 

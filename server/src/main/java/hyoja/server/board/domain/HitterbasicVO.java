@@ -6,10 +6,8 @@ public class HitterbasicVO {
   int single;
   int doubles;
   int triple;
-  int bb;
   int ibb;
   int HBP;
-  int strikeouts;
   int sac_fly;
   int sac_bunt;
   int gidp;
@@ -56,14 +54,6 @@ public class HitterbasicVO {
     this.triple = triple;
   }
 
-  public int getBb() {
-    return this.bb;
-  }
-
-  public void setBb(int bb) {
-    this.bb = bb;
-  }
-
   public int getIbb() {
     return this.ibb;
   }
@@ -78,14 +68,6 @@ public class HitterbasicVO {
 
   public void setHBP(int HBP) {
     this.HBP = HBP;
-  }
-
-  public int getStrikeouts() {
-    return this.strikeouts;
-  }
-
-  public void setStrikeouts(int strikeouts) {
-    this.strikeouts = strikeouts;
   }
 
   public int getSac_fly() {
