@@ -49,4 +49,15 @@ public class HittermainController {
     return hittermainList_team_season;
   }
 
+  @RequestMapping(value = "/hittermain/{team}/{season}/{hmid}", method = RequestMethod.GET)
+  @ResponseBody
+  private HittermainVO hittermain_team_season_hmid(@PathVariable String team, @PathVariable String season,
+      @PathVariable int hmid, Model model) throws Exception {
+
+    HittermainVO hittermain_team_season_hmid = mHittermainService.hittermain_team_season_hmidService(team, season,
+        hmid);
+
+    return hittermain_team_season_hmid;
+  }
+
 }

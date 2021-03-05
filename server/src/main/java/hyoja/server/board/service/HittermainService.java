@@ -30,4 +30,10 @@ public class HittermainService {
 
     return mHittermainMapper.hittermainList_team_season(team, season);
   }
+
+  // hittermain_team_season_hmidService
+  public HittermainVO hittermain_team_season_hmidService(String team, String season, int hmid) throws Exception {
+
+    return mHittermainMapper.hittermain_team_season_hm(team, season, hmid);
+  }
 }

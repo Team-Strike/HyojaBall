@@ -74,6 +74,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     WHERE
         team.name = #{team} AND season.name = #{season}
   </select>
+
+    <select id="hittermain_team_season_hm" resultMap="hittermainInfo">
+    SELECT
+        hm.*,
+        hi.id as h_id,
+        hi.team_id as h_team_id,
+        hi.season_id as h_season_id,
+        hi.name as h_name,
+        hi.birthday as h_birthday,
+        hi.salary as h_salary,
+        team.id as h_t_id,
+        team.name as h_t_name,
+        team.image_id as h_t_image_id,
+        season.id as h_s_id,
+        season.team_id as h_s_team_id,
+        season.name as h_s_name
+    FROM hitter_main_record hm JOIN hitter hi on hm.hitter_id = hi.id JOIN team on hi.team_id = team.id JOIN season on hi.season_id = season.id
+    WHERE
+        team.name = #{team} AND season.name = #{season} AND hm.id = #{hmid}
+  </select>
   
   
 </mapper>

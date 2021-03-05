@@ -18,4 +18,6 @@ public interface HittermainMapper {
   // hittermainList_team_season 해당 팀의 해당 시즌 타자 메인 기록 리스트
   public List<HittermainVO> hittermainList_team_season(String team, String season) throws Exception;
 
+  // hittermain_team_season_hm
+  public HittermainVO hittermain_team_season_hm(String team, String season, int hmid) throws Exception;
 }

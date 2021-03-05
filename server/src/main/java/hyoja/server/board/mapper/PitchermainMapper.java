@@ -17,4 +17,7 @@ public interface PitchermainMapper {
 
   // pitchermainList_team_season
   public List<PitchermainVO> pitchermainList_team_season(String team, String season) throws Exception;
+
+  // pitchermain_team_season_pmid
+  public PitchermainVO pitchermain_team_season_pmid(String team, String season, int pmid) throws Exception;
 }

@@ -50,4 +50,14 @@ public class HitterbasicController {
     return hitterbasicList_team_season;
   }
 
+  @RequestMapping(value = "/hitterbasic/{team}/{season}/{hbid}", method = RequestMethod.GET)
+  @ResponseBody
+  private HitterbasicVO hitterbasic_team_season_hbid(@PathVariable String team, @PathVariable String season,
+      @PathVariable int hbid, Model model) throws Exception {
+
+    HitterbasicVO hitterbasic_team_season_hbid = mHitterbasicService.hitterbasic_team_season_hbidService(team, season,
+        hbid);
+
+    return hitterbasic_team_season_hbid;
+  }
 }

@@ -29,4 +29,10 @@ public class PitcherbasicService {
 
     return mPitcherbasicMapper.pitcherbasicList_team_season(team, season);
   }
+
+  // pitcherbasic_team_season_pbidService
+  public PitcherbasicVO pitcherbasic_team_season_pbidService(String team, String season, int pbid) throws Exception {
+
+    return mPitcherbasicMapper.pitcherbasic_team_season_pbid(team, season, pbid);
+  }
 }

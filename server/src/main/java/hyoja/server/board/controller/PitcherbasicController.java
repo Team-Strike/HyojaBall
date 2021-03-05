@@ -50,4 +50,15 @@ public class PitcherbasicController {
     return pitcherbasicList_team_season;
   }
 
+  @RequestMapping(value = "/pitcherbasic/{team}/{season}/{pbid}", method = RequestMethod.GET)
+  @ResponseBody
+  private PitcherbasicVO pitcherbasic_team_season_pbid(@PathVariable String team, @PathVariable String season,
+      @PathVariable int pbid, Model model) throws Exception {
+
+    PitcherbasicVO pitcherbasic_team_season_pbid = mPitcherbasicService.pitcherbasic_team_season_pbidService(team,
+        season, pbid);
+
+    return pitcherbasic_team_season_pbid;
+  }
+
 }

@@ -29,4 +29,10 @@ public class HitterbasicService {
 
     return mHitterbasicMapper.hitterbasicList_team_season(team, season);
   }
+
+  // hitterbasic_team_season_hbidService
+  public HitterbasicVO hitterbasic_team_season_hbidService(String team, String season, int hbid) throws Exception {
+
+    return mHitterbasicMapper.hitterbasic_team_season_hbid(team, season, hbid);
+  }
 }

@@ -15,4 +15,7 @@ public interface HitterbasicMapper {
   public HitterbasicVO hitterbasicDetail(int hbno) throws Exception;
 
   public List<HitterbasicVO> hitterbasicList_team_season(String team, String season) throws Exception;
+
+  // hitterbasic_team_season_hbid
+  public HitterbasicVO hitterbasic_team_season_hbid(String team, String season, int hbid) throws Exception;
 }
